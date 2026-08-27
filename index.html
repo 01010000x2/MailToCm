@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="mr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>मुख्यमंत्र्यांना ई-मेल</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 30px;
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    .email-info {
+      background: #f1f3f5;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    #emailBody {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 20px;
+      border-radius: 8px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      border: none;
+      padding: 12px 20px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .gmail-btn {
+      background: #d93025;
+      color: white;
+    }
+
+    .copy-btn {
+      background: #1a73e8;
+      color: white;
+    }
+
+    button:hover {
+      opacity: 0.9;
+    }
+
+    .note {
+      margin-top: 15px;
+      padding: 12px;
+      background: #fff3cd;
+      border-radius: 6px;
+      color: #664d03;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>📩 मुख्यमंत्र्यांना ई-मेल</h1>
+
+    <div class="email-info">
+
+      <p>
+        <b>To:</b>
+        cm@maharashtra.gov.in
+      </p>
+
+      <p>
+        <b>Subject:</b>
+        मराठी भाषेच्या सक्तीच्या निर्णयाची मुदतवाढ रद्द करण्याबाबत विनंती
+      </p>
+
+    </div>
+
+    <hr>
+
+    <div id="emailBody">
+
+      मा. मुख्यमंत्री साहेब,<br><br>
+
+      सविनय नमस्कार.<br><br>
+
+      आपण परप्रांतियांना मराठी भाषेच्या सक्तीच्या निर्णयासाठी दिलेल्या मुदतीत पुन्हा वाढ केली आहे. यापूर्वीही त्यांना तीन महिन्यांची मुदतवाढ देण्यात आली होती. आपल्या या लवचिक भूमिकेमुळे महाराष्ट्रातील मराठी माणसाचा स्वाभिमान दुखावला जात आहे.<br><br>
+
+      मराठी भाषा अवगत असणे हा नियम सुरुवातीपासूनच लागू असताना संबंधित व्यक्तींना परवाने मिळालेच कसे, हा गंभीर प्रश्न निर्माण होतो. जर नियमांचे उल्लंघन करून परवाने देण्यात आले असतील, तर संबंधित अधिकारी आणि परवाना घेणाऱ्यांची चौकशी करून योग्य ती कारवाई होणे अपेक्षित आहे. मात्र, कारवाई करण्याऐवजी वारंवार मुदतवाढ दिल्याने सर्वसामान्य मराठी जनतेमध्ये चुकीचा संदेश जात आहे.<br><br>
+
+      मुख्यमंत्री साहेब, महाराष्ट्रातील मराठी भाषा, संस्कृती आणि मराठी माणसाच्या स्वाभिमानाबाबत आम्हाला आपल्या सरकारकडून ठोस आणि योग्य निर्णयाची अपेक्षा आहे. कृपया या विषयाकडे गांभीर्याने पाहून मराठी भाषेचा सन्मान आणि महाराष्ट्रधर्म जपण्यासाठी योग्य ती कार्यवाही करावी.<br><br>
+
+      आपण मराठी जनतेच्या भावना समजून घेऊन सकारात्मक निर्णय घ्याल, अशी अपेक्षा आहे.<br><br>
+
+      जय महाराष्ट्र!<br><br>
+
+      आपला,<br>
+      मराठी माणूस
+
+    </div>
+
+    <div class="buttons">
+
+      <button class="gmail-btn" onclick="openGmail()">
+        📧 Gmail मध्ये ई-मेल तयार करा
+      </button>
+
+      <button class="copy-btn" onclick="copyEmail()">
+        📋 मजकूर कॉपी करा
+      </button>
+
+    </div>
+
+    <div class="note">
+      ℹ️ Gmail उघडल्यानंतर ई-मेलच्या Body मध्ये Ctrl + V दाबा.
+    </div>
+
+  </div>
+
+
+  <script>
+
+    // ========================================
+    // EMAIL CONTENT
+    // ========================================
+
+    const emailBody = `मा. मुख्यमंत्री साहेब,
+
+सविनय नमस्कार.
+
+आपण परप्रांतियांना मराठी भाषेच्या सक्तीच्या निर्णयासाठी दिलेल्या मुदतीत पुन्हा वाढ केली आहे. यापूर्वीही त्यांना तीन महिन्यांची मुदतवाढ देण्यात आली होती. आपल्या या लवचिक भूमिकेमुळे महाराष्ट्रातील मराठी माणसाचा स्वाभिमान दुखावला जात आहे.
+
+मराठी भाषा अवगत असणे हा नियम सुरुवातीपासूनच लागू असताना संबंधित व्यक्तींना परवाने मिळालेच कसे, हा गंभीर प्रश्न निर्माण होतो. जर नियमांचे उल्लंघन करून परवाने देण्यात आले असतील, तर संबंधित अधिकारी आणि परवाना घेणाऱ्यांची चौकशी करून योग्य ती कारवाई होणे अपेक्षित आहे. मात्र, कारवाई करण्याऐवजी वारंवार मुदतवाढ दिल्याने सर्वसामान्य मराठी जनतेमध्ये चुकीचा संदेश जात आहे.
+
+मुख्यमंत्री साहेब, महाराष्ट्रातील मराठी भाषा, संस्कृती आणि मराठी माणसाच्या स्वाभिमानाबाबत आम्हाला आपल्या सरकारकडून ठोस आणि योग्य निर्णयाची अपेक्षा आहे. कृपया या विषयाकडे गांभीर्याने पाहून मराठी भाषेचा सन्मान आणि महाराष्ट्रधर्म जपण्यासाठी योग्य ती कार्यवाही करावी.
+
+आपण मराठी जनतेच्या भावना समजून घेऊन सकारात्मक निर्णय घ्याल, अशी अपेक्षा आहे.
+
+जय महाराष्ट्र!
+
+आपला,
+मराठी माणूस`;
+
+
+    // ========================================
+    // OPEN GMAIL
+    // ========================================
+
+    function openGmail() {
+
+      const to = "cm@maharashtra.gov.in";
+
+      const subject =
+        "मराठी भाषेच्या सक्तीच्या निर्णयाची मुदतवाढ रद्द करण्याबाबत विनंती";
+
+
+      // Copy first
+      copyToClipboard(emailBody, false);
+
+
+      // Gmail URL WITHOUT BODY
+      const gmailUrl =
+        "https://mail.google.com/mail/u/0/?view=cm&fs=1" +
+        "&to=" + encodeURIComponent(to) +
+        "&su=" + encodeURIComponent(subject);
+
+
+      // Open Gmail
+      window.open(gmailUrl, "_blank");
+
+
+      setTimeout(function () {
+
+        alert(
+          "✅ ई-मेलचा मजकूर कॉपी करण्याचा प्रयत्न केला आहे.\n\n" +
+          "Gmail मध्ये Body वर क्लिक करा आणि\n" +
+          "Ctrl + V दाबा."
+        );
+
+      }, 500);
+    }
+
+
+    // ========================================
+    // COPY BUTTON
+    // ========================================
+
+    function copyEmail() {
+
+      copyToClipboard(emailBody, true);
+
+    }
+
+
+    // ========================================
+    // COPY FUNCTION
+    // ========================================
+
+    function copyToClipboard(text, showMessage) {
+
+      // Modern Clipboard API
+      if (navigator.clipboard) {
+
+        navigator.clipboard.writeText(text)
+          .then(function () {
+
+            if (showMessage) {
+              alert("✅ ई-मेल मजकूर कॉपी झाला!");
+            }
+
+          })
+          .catch(function () {
+
+            fallbackCopy(text, showMessage);
+
+          });
+
+      } else {
+
+        fallbackCopy(text, showMessage);
+
+      }
+
+    }
+
+
+    // ========================================
+    // FALLBACK COPY
+    // ========================================
+
+    function fallbackCopy(text, showMessage) {
+
+      const textarea =
+        document.createElement("textarea");
+
+      textarea.value = text;
+
+      textarea.style.position = "fixed";
+      textarea.style.left = "-9999px";
+      textarea.style.top = "0";
+
+      document.body.appendChild(textarea);
+
+      textarea.focus();
+      textarea.select();
+
+      try {
+
+        const successful =
+          document.execCommand("copy");
+
+        if (showMessage) {
+
+          if (successful) {
+
+            alert("✅ ई-मेल मजकूर कॉपी झाला!");
+
+          } else {
+
+            alert(
+              "❌ कॉपी करता आली नाही.\n\n" +
+              "कृपया ई-मेल मजकूर manually select करून Ctrl + C करा."
+            );
+
+          }
+
+        }
+
+      } catch (error) {
+
+        if (showMessage) {
+
+          alert(
+            "❌ कॉपी करता आली नाही.\n\n" +
+            "कृपया मजकूर select करून Ctrl + C करा."
+          );
+
+        }
+
+      }
+
+      document.body.removeChild(textarea);
+
+    }
+
+  </script>
+
+</body>
+
+</html>
