@@ -8,11 +8,15 @@
   <title>मुख्यमंत्र्यांना ई-मेल</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: Arial, "Noto Sans Devanagari", sans-serif;
       background: #f4f6f8;
       margin: 0;
-      padding: 30px;
+      padding: 20px;
       line-height: 1.7;
     }
 
@@ -20,7 +24,7 @@
       max-width: 800px;
       margin: auto;
       background: white;
-      padding: 30px;
+      padding: 25px;
       border-radius: 12px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
@@ -28,6 +32,7 @@
     h1 {
       text-align: center;
       color: #333;
+      margin-top: 0;
     }
 
     .email-info {
@@ -35,6 +40,11 @@
       padding: 15px;
       border-radius: 8px;
       margin-bottom: 20px;
+      word-break: break-word;
+    }
+
+    .email-info p {
+      margin: 8px 0;
     }
 
     #emailBody {
@@ -53,13 +63,14 @@
 
     button {
       border: none;
-      padding: 12px 20px;
-      border-radius: 6px;
+      padding: 13px 20px;
+      border-radius: 7px;
       cursor: pointer;
       font-size: 16px;
+      font-family: inherit;
     }
 
-    .gmail-btn {
+    .email-btn {
       background: #d93025;
       color: white;
     }
@@ -77,10 +88,40 @@
       margin-top: 15px;
       padding: 12px;
       background: #fff3cd;
-      border-radius: 6px;
+      border-radius: 7px;
       color: #664d03;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+
+      body {
+        padding: 10px;
+      }
+
+      .container {
+        padding: 18px;
+      }
+
+      h1 {
+        font-size: 24px;
+      }
+
+      #emailBody {
+        padding: 15px;
+        font-size: 15px;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      button {
+        width: 100%;
+      }
     }
   </style>
+
 </head>
 
 <body>
@@ -128,8 +169,8 @@
 
     <div class="buttons">
 
-      <button class="gmail-btn" onclick="openGmail()">
-        📧 Gmail मध्ये ई-मेल तयार करा
+      <button class="email-btn" onclick="openEmail()">
+        📧 ई-मेल तयार करा
       </button>
 
       <button class="copy-btn" onclick="copyEmail()">
@@ -139,7 +180,8 @@
     </div>
 
     <div class="note">
-      ℹ️ Gmail उघडल्यानंतर ई-मेलच्या Body मध्ये Ctrl + V दाबा.
+      ℹ️ ई-मेल बटण दाबल्यावर तुमच्या फोनमधील ई-मेल अॅप उघडेल.
+      To, Subject आणि मजकूर आपोआप भरला जाईल. त्यानंतर फक्त Send दाबा.
     </div>
 
   </div>
@@ -147,11 +189,17 @@
 
   <script>
 
-    // ========================================
-    // EMAIL CONTENT
-    // ========================================
+    // ==========================================
+    // EMAIL DETAILS
+    // ==========================================
 
-    const emailBody = `मा. मुख्यमंत्री साहेब,
+    const emailAddress = "cm@maharashtra.gov.in";
+
+    const emailSubject =
+      "मराठी भाषेच्या सक्तीच्या निर्णयाची मुदतवाढ रद्द करण्याबाबत विनंती";
+
+
+    const emailText = `मा. मुख्यमंत्री साहेब,
 
 सविनय नमस्कार.
 
@@ -169,102 +217,65 @@
 मराठी माणूस`;
 
 
-    // ========================================
-    // OPEN GMAIL
-    // ========================================
+    // ==========================================
+    // OPEN EMAIL APP
+    // ==========================================
 
-    function openGmail() {
+    function openEmail() {
 
-      const to = "cm@maharashtra.gov.in";
+      const mailtoLink =
+        "mailto:" +
+        emailAddress +
+        "?subject=" +
+        encodeURIComponent(emailSubject) +
+        "&body=" +
+        encodeURIComponent(emailText);
 
-      const subject =
-        "मराठी भाषेच्या सक्तीच्या निर्णयाची मुदतवाढ रद्द करण्याबाबत विनंती";
-
-
-      // Copy first
-      copyToClipboard(emailBody, false);
-
-
-      // Gmail URL WITHOUT BODY
-      const gmailUrl =
-        "https://mail.google.com/mail/u/0/?view=cm&fs=1" +
-        "&to=" + encodeURIComponent(to) +
-        "&su=" + encodeURIComponent(subject);
-
-
-      // Open Gmail
-      window.open(gmailUrl, "_blank");
-
-
-      setTimeout(function () {
-
-        alert(
-          "✅ ई-मेलचा मजकूर कॉपी करण्याचा प्रयत्न केला आहे.\n\n" +
-          "Gmail मध्ये Body वर क्लिक करा आणि\n" +
-          "Ctrl + V दाबा."
-        );
-
-      }, 500);
+      window.location.href = mailtoLink;
     }
 
 
-    // ========================================
-    // COPY BUTTON
-    // ========================================
+    // ==========================================
+    // COPY EMAIL
+    // ==========================================
 
     function copyEmail() {
 
-      copyToClipboard(emailBody, true);
-
-    }
-
-
-    // ========================================
-    // COPY FUNCTION
-    // ========================================
-
-    function copyToClipboard(text, showMessage) {
-
-      // Modern Clipboard API
       if (navigator.clipboard) {
 
-        navigator.clipboard.writeText(text)
+        navigator.clipboard.writeText(emailText)
           .then(function () {
 
-            if (showMessage) {
-              alert("✅ ई-मेल मजकूर कॉपी झाला!");
-            }
+            alert("✅ ई-मेल मजकूर कॉपी झाला!");
 
           })
           .catch(function () {
 
-            fallbackCopy(text, showMessage);
+            fallbackCopy();
 
           });
 
       } else {
 
-        fallbackCopy(text, showMessage);
+        fallbackCopy();
 
       }
-
     }
 
 
-    // ========================================
-    // FALLBACK COPY
-    // ========================================
+    // ==========================================
+    // COPY FALLBACK
+    // ==========================================
 
-    function fallbackCopy(text, showMessage) {
+    function fallbackCopy() {
 
       const textarea =
         document.createElement("textarea");
 
-      textarea.value = text;
+      textarea.value = emailText;
 
       textarea.style.position = "fixed";
       textarea.style.left = "-9999px";
-      textarea.style.top = "0";
 
       document.body.appendChild(textarea);
 
@@ -276,38 +287,23 @@
         const successful =
           document.execCommand("copy");
 
-        if (showMessage) {
+        if (successful) {
 
-          if (successful) {
+          alert("✅ ई-मेल मजकूर कॉपी झाला!");
 
-            alert("✅ ई-मेल मजकूर कॉपी झाला!");
+        } else {
 
-          } else {
-
-            alert(
-              "❌ कॉपी करता आली नाही.\n\n" +
-              "कृपया ई-मेल मजकूर manually select करून Ctrl + C करा."
-            );
-
-          }
+          alert("❌ मजकूर कॉपी करता आला नाही.");
 
         }
 
       } catch (error) {
 
-        if (showMessage) {
-
-          alert(
-            "❌ कॉपी करता आली नाही.\n\n" +
-            "कृपया मजकूर select करून Ctrl + C करा."
-          );
-
-        }
+        alert("❌ मजकूर कॉपी करता आला नाही.");
 
       }
 
       document.body.removeChild(textarea);
-
     }
 
   </script>
